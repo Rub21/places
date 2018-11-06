@@ -61,7 +61,20 @@
 }
 
 
+.textfield{
+  display: block !important;
+  width: 100% !important;
+}
+.Login-actions{
+  margin-top:1em;
+  text-align: right;
+}
 
+.Login-background{
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
 
 .fade-scale-enter {
   opacity: 0;

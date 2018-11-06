@@ -1,19 +1,22 @@
 export default {
   places: [
     {
-      imageUrl: '/images/place-3.jpg',
+      imageUrl: '/images/p3.png',
       title: 'Desayunos el rey',
-      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
+      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+      address:'sds'
     },
     {
-      imageUrl: '/images/place-1.jpeg',
+      imageUrl: '/images/p1.png',
       title: 'Starbucks Norte',
-      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
+      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+      address:'dsds'
     },
     {
-      imageUrl: '/images/place-2.jpg',
+      imageUrl: '/images/p2.png',
       title: 'Pizza de amor',
-      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.'
+      description: 'Starbucks Corporation is an American coffee company and coffeehouse chain.',
+      address:'dsdsd'
     }
   ]
 }

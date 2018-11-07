@@ -2,7 +2,8 @@ import React from 'react';
 import {
     BrowserRouter as ReactRouter,
     Link,
-    Route
+    Route,
+    Switch
 } from 'react-router-dom';
 
 import App from './App';
@@ -32,11 +33,12 @@ export default class Router extends React.Component {
         return (
             <ReactRouter>
                 <App>
-
-                    <Route exact path="/" component={this.home()}></Route>
-                    <Route path="/login" component={Login}></Route>
-                    <Route path="/signup" component={Login}></Route>
-                    {this.signedInRoutes()}
+                    <Switch>
+                        <Route exact path="/" component={this.home()}></Route>
+                        <Route path="/login" component={Login}></Route>
+                        <Route path="/signup" component={Login}></Route>
+                        {this.signedInRoutes()}
+                    </Switch>
                 </App>
             </ReactRouter>)
     }

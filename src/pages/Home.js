@@ -6,7 +6,7 @@ import Benefits from '../components/Benefits';
 import PlaceCard from '../components/places/PlaceCard';
 import data from '../requests/places';
 import Container from './../components/Container';
-
+import {Link}  from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
 
@@ -44,7 +44,10 @@ export default class Home extends React.Component {
           <Container>
             <div className="Header-main">
               <Title></Title>
+              <Link to="/signup">
               <RaisedButton label="Crear cuenta gratuita" secondary={true} />
+
+              </Link>
               <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/p3.png'} />
             </div>
             <div>

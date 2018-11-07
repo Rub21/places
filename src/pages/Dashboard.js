@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '../components/Container';
 import { FlatButton, FloatingActionButton } from 'material-ui';
-import data from './../requests/places'
+import { getPlaces } from './../requests/places'
 import PlaceHorizontal from '../components/places/PlaceHorizontal';
 
 import {
@@ -13,10 +13,18 @@ export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            places: data.places
+            places: []
         }
+        this.loadPlaces();
     }
-
+    loadPlaces() {
+        getPlaces().then(jsonR => {
+            console.log(jsonR)
+            this.setState({
+                places: jsonR.docs
+            })
+        });
+    }
     places() {
         return this.state.places.map((place, index) => {
             return <PlaceHorizontal place={place} />
@@ -27,10 +35,10 @@ export default class Dashboard extends React.Component {
             <div>
                 <Link to="/new">
                     <FloatingActionButton
-                    className="FAB"
-                    secondary={true}
+                        className="FAB"
+                        secondary={true}
                     >
-                    <ContentAdd></ContentAdd>
+                        <ContentAdd></ContentAdd>
                     </FloatingActionButton>
                 </Link>
 

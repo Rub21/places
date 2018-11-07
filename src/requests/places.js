@@ -7,7 +7,20 @@ function getPlaces() {
     console.log(err);
   })
 }
-export {getPlaces};
+
+
+
+function getPlace(slug) {
+  return fetch('http://localhost:8080/places/'+slug).then(data => {
+    return data.json()
+  }).catch(err=>{
+    console.log('========================');
+
+    console.log(err);
+  })
+}
+
+export {getPlaces,getPlace};
 export default {
   places: [
     {

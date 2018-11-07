@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 
 import Login from './pages/Login';
+import Place from './pages/Place';
 const userSignedIn = true;
 
 
@@ -35,6 +36,8 @@ export default class Router extends React.Component {
                 <App>
                     <Switch>
                         <Route exact path="/" component={this.home()}></Route>
+                        <Route path="/lugares/:slug" component={Place}></Route>
+
                         <Route path="/login" component={Login}></Route>
                         <Route path="/signup" component={Login}></Route>
                         {this.signedInRoutes()}

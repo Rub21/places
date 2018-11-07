@@ -5,17 +5,18 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import App from './App';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-
 import Login from './pages/Login';
 import Place from './pages/Place';
-const userSignedIn = true;
+const userSignedIn = false;
 
+//Hacemos que router tenga aceesoa tbn al storage
 
-export default class Router extends React.Component {
+class Router extends React.Component {
 
     signedInRoutes() {
         if (true) {
@@ -25,7 +26,7 @@ export default class Router extends React.Component {
         }
     }
     home() {
-        if (userSignedIn) {
+        if (this.props.user.jwt) {
             return Dashboard;
         }
         return Home;
@@ -34,15 +35,24 @@ export default class Router extends React.Component {
         return (
             <ReactRouter>
                 <App>
-                    <Switch>
+                    {/* <Switch> */}
                         <Route exact path="/" component={this.home()}></Route>
                         <Route path="/lugares/:slug" component={Place}></Route>
 
                         <Route path="/login" component={Login}></Route>
                         <Route path="/signup" component={Login}></Route>
                         {this.signedInRoutes()}
-                    </Switch>
+                    {/* </Switch> */}
                 </App>
             </ReactRouter>)
     }
 }
+
+function mapStateToProps(state,ownProps){
+    return {
+        user:state.user
+    }
+}
+
+
+export default connect(mapStateToProps)(Router)

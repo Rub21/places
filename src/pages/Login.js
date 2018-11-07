@@ -4,6 +4,10 @@ import Title from '../components/Title';
 import TextField from 'material-ui/TextField';
 import RaiseButton from 'material-ui/RaisedButton';
 import Container from './../components/Container';
+import { connect } from 'react-redux';
+
+// importamos las acciones
+import * as actions from './../actions/userActions';
 
 import {
     BrowserRouter as ReactRouter,
@@ -13,14 +17,14 @@ import {
 import { login, signUp } from '../requests/auth';
 
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
 
     constructor(props) {
         super(props);
         this.requestAuth = this.requestAuth.bind(this);
         this.createAcount = this.createAcount.bind(this);
-
+        console.log(this.props.user);
     }
     requestAuth() {
         const credentials = {
@@ -28,7 +32,16 @@ export default class Login extends React.Component {
             password: this.refs.passwordField.getValue()
         }
 
-        signUp(credentials).then(console.log).catch(console.log);
+        login(credentials).then(data => {
+            //Ejecutas la accion
+            console.log('===============')
+            console.log(this.props.user);
+
+            this.props.dispatch(actions.login(data.jwt));
+            console.log(this.props.user);
+
+
+        }).catch(console.log);
 
     }
 
@@ -41,12 +54,14 @@ export default class Login extends React.Component {
     }
 
     render() {
+        console.log(this.props.user)
         return (
             <div className="row middle-xs">
                 <div className="col-xs-12 col-sm-6">
                     <Container>
                         <div style={{ textAlign: 'left' }}>
-                            <Title></Title>
+                            <Title>
+                            </Title>
                             <TextField
                                 floatingLabelText="correo"
                                 type="email"
@@ -109,3 +124,14 @@ export default class Login extends React.Component {
         )
     }
 }
+
+
+function mapStateToPops(state, ownProps) {
+    return {
+        user: state.user //este user se deberia de integral al reducers
+    }
+}
+
+
+
+export default connect(mapStateToPops)(Login);

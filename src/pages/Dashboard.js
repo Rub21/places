@@ -3,7 +3,7 @@ import Container from '../components/Container';
 import { FlatButton, FloatingActionButton } from 'material-ui';
 import { getPlaces } from './../requests/places'
 import PlaceHorizontal from '../components/places/PlaceHorizontal';
-
+import uuidv4 from 'uuid/v4';
 import {
     Link
 } from 'react-router-dom';
@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
     }
     places() {
         return this.state.places.map((place, index) => {
-            return <PlaceHorizontal place={place} />
+            return <PlaceHorizontal  key={uuidv4()} place={place} />
         })
     }
     render() {

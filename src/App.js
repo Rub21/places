@@ -4,6 +4,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 import MyAppBar from './components/navigation/MyAppBar';
 
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
+
 
 class App extends Component {
 
@@ -13,7 +17,9 @@ class App extends Component {
   }
 
   goHome(){
-    this.props.history.push('/');
+    // this.props.history.push('/');
+    history.push("/", { });
+    history.go(-1);
   }
   render() {
     return (
